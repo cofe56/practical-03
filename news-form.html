@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Додати авіаційну новину | Авіаційний портал</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">На головну</a>
+      <h1>Створення нової публікації</h1>
+      <p>Заповніть форму для розміщення матеріалу в новинній стрічці порталу.</p>
+    </header>
+
+    <main>
+      <form action="/articles/create" method="post">
+        <div>
+          <label for="article-title">Заголовок матеріалу</label>
+          <p id="title-hint">Від 5 до 120 символів. Має стисло передавати суть новини.</p>
+          <input
+            type="text"
+            id="article-title"
+            name="title"
+            minlength="5"
+            maxlength="120"
+            aria-describedby="title-hint"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="article-category">Тематичний розділ</label>
+          <select id="article-category" name="category" required>
+            <option value="">Оберіть категорію...</option>
+            <option value="civil">Цивільна авіація</option>
+            <option value="military">Військова авіація</option>
+            <option value="drones">БПЛА та безпілотні системи</option>
+            <option value="technologies">Авіоніка та двигунобудування</option>
+          </select>
+        </div>
+
+        <fieldset>
+          <legend>Тип публікації</legend>
+          <label>
+            <input type="radio" name="articleType" value="news" required checked>
+            Оперативна новина
+          </label>
+          <label>
+            <input type="radio" name="articleType" value="analysis">
+            Аналітична стаття
+          </label>
+          <label>
+            <input type="radio" name="articleType" value="tech-review">
+            Огляд техніки
+          </label>
+        </fieldset>
+
+        <div>
+          <label for="article-event-date">Дата події</label>
+          <input
+            type="date"
+            id="article-event-date"
+            name="eventDate"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="article-reading-time">Орієнтовний час читання (у хвилинах)</label>
+          <input
+            type="number"
+            id="article-reading-time"
+            name="readingTime"
+            min="1"
+            max="60"
+            step="1"
+            value="3"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="article-content">Повний зміст публікації</label>
+          <textarea
+            id="article-content"
+            name="content"
+            rows="8"
+            cols="50"
+            minlength="30"
+            maxlength="5000"
+            required
+          ></textarea>
+        </div>
+
+        <fieldset>
+          <legend>Параметри публікації</legend>
+          <label>
+            <input type="checkbox" name="isUrgent" value="yes">
+            Термінова новина (додати позначку «Важливо»)
+          </label>
+          <br>
+          <label>
+            <input type="checkbox" name="allowComments" value="yes" checked>
+            Дозволити обговорення в коментарях
+          </label>
+        </fieldset>
+
+        <div>
+          <button type="submit">Опублікувати матеріал</button>
+          <a href="index.html">Скасувати</a>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
